@@ -7,7 +7,7 @@ GO
 -- Create tables
 CREATE TABLE account (
     uname VARCHAR(20) NOT NULL,
-    passwd varchar(50) NOT NULL,
+    passwd VARCHAR(50) NOT NULL,
     acctype INT NOT NULL, -- 0: admin | 1: nomal
 
     PRIMARY KEY(uname)
@@ -25,7 +25,7 @@ CREATE TABLE accountInfo (
 GO
 
 CREATE TABLE item (
-	cid INT,
+	cid INT IDENTITY(1,1),
 	iname NVARCHAR(100) NOT NULL,
 	idescription NTEXT NOT NULL,
 	thumbnailimg NVARCHAR(200) NOT NULL DEFAULT 'https://www.apple.com/ac/structured-data/images/open_graph_logo.png?201810040211',
