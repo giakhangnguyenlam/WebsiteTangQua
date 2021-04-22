@@ -42,7 +42,7 @@ Body:
 {
 	"username": "catuser",
 	"password": "123meow",
-    "accountType": 1
+    	"accountType": 1
 }
 ```
 
