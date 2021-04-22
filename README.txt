@@ -17,7 +17,7 @@
 
 # Cách thực thi Front-end
   - Đổi tất cả đường dẫn (link) API (tương ứng với host Back-end) trong code Front-end
-  - Tại thư mục gốc của project: chạy bằng lệnh npm start hoặc yarn start
+  - Tại thư mục gốc của project: chạy bằng lệnh yarn, sau đó yarn serve
   
 # Truy cập website với link tương ứng với host Front-end
   VD: http://localhost:3000
