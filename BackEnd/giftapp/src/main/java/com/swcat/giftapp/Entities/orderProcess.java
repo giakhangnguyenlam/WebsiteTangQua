@@ -11,22 +11,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "accountinfo")
+@Table(name = "orderprocess")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class accountInfo {
+public class orderProcess {
     @Id
-    @Column(name = "uname")
-    private String uname;
+    @Column(name = "gorderid")
+    private Integer gorderId;
 
-    @Column(name = "disname")
-    private String disName;
+    @Column(name = "pstate")
+    private String pstate;
 
-    @Column(name = "uaddress")
-    private String uaddress;
+    @Column(name = "pdelivered")
+    private Integer pdelivered;
 
-    @Column(name = "phonenum")
-    private Integer phonenum;
+    @Column(name = "pcanceled")
+    private Integer pcanceled;
 }
