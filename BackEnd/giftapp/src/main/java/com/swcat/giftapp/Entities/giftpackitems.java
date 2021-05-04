@@ -13,29 +13,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "item")
+@Table(name = "giftpackitems")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class item {
+public class giftpackitems {
     @Id
-    @Column(name = "item")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cid")
     private Integer cid;
 
-    @Column(name = "iname")
-    private String itemName;
+    @Column(name = "giftpackid")
+    private Integer giftpackId;
 
-    @Column(name = "idescription")
-    private String itemDescription;
-
-    @Column(name = "thumbnailimg")
-    private String thumbnailimg;
-
-    @Column(name = "price")
-    private Integer price;
-
-    @Column(name = "activestate")
-    private Integer activeState;
+    @Column(name = "itemid")
+    private Integer itemId;
 }

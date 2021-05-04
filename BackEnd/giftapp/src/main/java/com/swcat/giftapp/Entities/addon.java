@@ -13,29 +13,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "item")
+@Table(name = "addon")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class item {
+public class addon {
     @Id
-    @Column(name = "item")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cid")
     private Integer cid;
 
-    @Column(name = "iname")
-    private String itemName;
+    @Column(name = "aname")
+    private String aname;
 
-    @Column(name = "idescription")
-    private String itemDescription;
-
-    @Column(name = "thumbnailimg")
-    private String thumbnailimg;
+    @Column(name = "adescription")
+    private String adescription;
 
     @Column(name = "price")
     private Integer price;
-
-    @Column(name = "activestate")
-    private Integer activeState;
 }
