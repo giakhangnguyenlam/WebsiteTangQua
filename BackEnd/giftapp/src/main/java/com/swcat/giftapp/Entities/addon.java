@@ -26,7 +26,7 @@ public class addon {
 
     @Column(name = "aname")
     private String aname;
-
+    
     @Column(name = "adescription")
     private String adescription;
 
