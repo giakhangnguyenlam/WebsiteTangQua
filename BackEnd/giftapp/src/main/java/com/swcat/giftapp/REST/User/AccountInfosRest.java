@@ -40,7 +40,7 @@ public class AccountInfosRest {
         accountInfoModel = accountInfoService.createAccountInfo(accountInfoModel);
         return Response.status(201)
         .entity("Lưu thành công accountInforService")
-        .contentLocation(new URI("/accountinfos/" + accountInfoModel.getUname()))
+        .contentLocation(new URI("api/accountinfos/" + accountInfoModel.getUname()))
         .build();
     }
 
@@ -87,7 +87,7 @@ public class AccountInfosRest {
             accountInfoModel accountInfoModel = accountInfoService.getAccountInfo(uname);
             return Response.status(200)
             .entity(accountInfoModel)
-            .contentLocation(new URI("/accountinfos/" + accountInfoModel.getUname()))
+            .contentLocation(new URI("api/accountinfos/" + accountInfoModel.getUname()))
             .build();
         }
         else{

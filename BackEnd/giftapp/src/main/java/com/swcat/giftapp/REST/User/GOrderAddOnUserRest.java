@@ -43,7 +43,7 @@ public class GOrderAddOnUserRest {
         gOrderAddOnModel = gOrderAddonService.createGOrderAddOn(gOrderAddOnModel);
         return Response.status(201)
         .entity("Lưu thành công gOrderAddOn")
-        .contentLocation(new URI("/api/gorderaddon/"+gOrderAddOnModel.getCid()))
+        .contentLocation(new URI("/api/gorderaddon/"+gOrderAddOnModel.getGorderId()))
         .build();
     }
 

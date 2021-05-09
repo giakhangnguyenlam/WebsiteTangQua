@@ -1,67 +1,7 @@
-U can replace ___localhost___ to ___tonydomain.ddns.net___
+#Nhóm 15
+#Mô tả phiên bản 1.1
 
-# Account
-
-Link: http://localhost:8080/api/accounts/signup
-
-Or: http://localhost:8080/giftapp/api/accounts/signup
-
-## POST:
-
-### Request
-
-Body:
-
-```json
-{
-	"username": "catuser",
-	"password": "123meow"
-}
-```
-
-### Response
-
-Status code:
-
-+ 400 (Bad Request): Invalid input or username was exist
-+ 201 (Created): Successfully
-
----
-
-Link: http://localhost:8080/api/accounts/signin
-
-Or: http://localhost:8080/giftapp/api/accounts/signin
-
-## POST
-
-### Request
-
-Body:
-
-```json
-{
-	"username": "catuser",
-	"password": "123meow",
-    	"accountType": 1
-}
-```
-
-accountType
-
-+ 1: normal user
-+ 0: admin user
-
-### Response
-
-Status code:
-
-+ 400 (Bad Request): Invalid input
-+ 200 (OK): Successfully
-
-# Nhóm 15
-# Mô tả phiên bản 1.1
-
-# API: AccountInfos
+#API: AccountInfos
 link: http://localhost:8080/api/accountinfos
 /**
      * 
@@ -82,12 +22,12 @@ link: http://localhost:8080/api/accountinfos
 }
 ```
 
-### Response
-# Successes
+###Response
+#Successes
 Status: 201
 Lưu thành công accountInforService
 
-# Failure
+#Failure
 Status: 404
 
 /**
@@ -99,7 +39,7 @@ Status: 404
      * @throws URISyntaxException
 */
 link: http://localhost:8080/api/accountinfos/khangtest1
-### Request
+###Request
 ```
 {
     "disname" : "khangtest3",
@@ -108,21 +48,21 @@ link: http://localhost:8080/api/accountinfos/khangtest1
 }
 ```
 
-### Response
-# Successes
+###Response
+#Successes
 Status:200
 AccountInfo đã được update
 
-# Failure
+#Failure
 Status:404
 /**
     Lấy tất cả AccountInfos
     GET
 */
-### Request
+###Request
 link: http://localhost:8080/api/accountinfos
-### Response
-# Successes
+###Response
+#Successes
 [
     {
         "uname": "khangtest1",
@@ -131,7 +71,7 @@ link: http://localhost:8080/api/accountinfos
         "phonenum": 919910266
     }
 ]
-# Failure
+#Failure
 Status:404
 
 /**
@@ -140,10 +80,10 @@ Status:404
 */
 link: http://localhost:8080/api/accountinfos/khangtest1
 
-### Request
+###Request
 
-### Response
-# Successes
+###Response
+#Successes
 Status:200
 {
     "uname": "khangtest2",
@@ -151,7 +91,7 @@ Status:200
     "uaddress": "daylaaddresss",
     "phonenum": 919910266
 }
-# Failure
+#Failure
 Status: 404
 
 /**
@@ -160,25 +100,25 @@ Status: 404
 */
 
 link: http://localhost:8080/api/accountinfos/khangtest1
-### Request
+###Request
 
-### Response
-# Successes:
+###Response
+#Successes:
 Status:200
 Xóa accountInfo thành công
-# Failure:
+#Failure:
 Status:404
 
 
 
 
-# API: GOrderAddOnUserRest
+#API: GOrderAddOnUserRest
 link: http://localhost:8080/api/gorderaddon
 /**
     POST
     thêm gorderaddon vào database
 */
-### Request
+###Request
 ```
 {
 
@@ -189,12 +129,12 @@ link: http://localhost:8080/api/gorderaddon
 }
 ```
 
-### Response
-# Successes
+###Response
+#Successes
 Status: 201
 Lưu thành công gOrderAddOn
 
-# Failure
+#Failure
 Status: 404
 
 /**
@@ -202,17 +142,17 @@ Status: 404
     chỉnh sửa gorderaddon
 */
 link: http://localhost:8080/api/gorderaddon/2
-### Request
+###Request
 {
     "addonId": 3,
     "content":"Muon sua thanh addon thu ba"
 }
-### Response
-# Successes
+###Response
+#Successes
 Status: 200
 GOrderAddOn update thành công
 
-# Failure
+#Failure
 Status: 400
 
 /**
@@ -220,10 +160,10 @@ Status: 400
     Lấy tất cả gOrderAddOn
 */
 link: http://localhost:8080/api/gorderaddon
-### Request
+###Request
 
-### Response
-# Successes
+###Response
+#Successes
 [
     {
         "cid": 1,
@@ -263,7 +203,7 @@ link: http://localhost:8080/api/gorderaddon
     }
 ]
 
-# Failure
+#Failure
 Status: 404
 
 /**
@@ -271,10 +211,10 @@ Status: 404
     Lấy một gOrderAddOn
 */
 link: http://localhost:8080/api/gorderaddon/2
-### Request
+###Request
 
-### Response
-# Successes
+###Response
+#Successes
 Status:200
 {
     "cid": 5,
@@ -285,7 +225,7 @@ Status:200
     "adescription": "dung de test",
     "price": 10000
 }
-# Failure
+#Failure
 Status: 404
 
 /**
@@ -294,12 +234,12 @@ Status: 404
 */
 
 link: http://localhost:8080/api/gorderaddon/2
-### Request
+###Request
 
-### Response
-# Successes
+###Response
+#Successes
 Status: 200
 Đã xóa thành công addon
 
-# Failure
+#Failure
 Status: 404
