@@ -133,6 +133,7 @@ Status:404
 link: http://localhost:8080/api/accountinfos
 ### Response
 #### Successes
+```
 [
     {
         "uname": "khangtest1",
@@ -141,6 +142,7 @@ link: http://localhost:8080/api/accountinfos
         "phonenum": 919910266
     }
 ]
+```
 #### Failure
 Status:404
 
@@ -157,12 +159,14 @@ link: http://localhost:8080/api/accountinfos/khangtest1
 ### Response
 #### Successes
 Status:200
+```
 {
     "uname": "khangtest2",
     "disname": "khangtest2",
     "uaddress": "daylaaddresss",
     "phonenum": 919910266
 }
+```
 #### Failure
 Status: 404
 
@@ -227,11 +231,13 @@ Status: 404
 -->
 link: http://localhost:8080/api/gorderaddon/2
 ### Request
+```
 {
     "gorderId": 15,
     "addonId": 3,
     "content":"Muon sua thanh addon thu ba"
 }
+```
 ### Response
 #### Successes
 Status: 200
@@ -252,6 +258,7 @@ link: http://localhost:8080/api/gorderaddon
 
 ### Response
 #### Successes
+```
 [
     {
         "cid": 1,
@@ -290,7 +297,7 @@ link: http://localhost:8080/api/gorderaddon
         "price": null
     }
 ]
-
+```
 #### Failure
 Status: 404
 
@@ -309,6 +316,7 @@ link: http://localhost:8080/api/gorderaddon/15
 ### Response
 #### Successes
 Status:200
+```
 [
     {
         "cid": 17,
@@ -329,6 +337,7 @@ Status:200
         "price": 30000
     }
 ]
+```
 #### Failure
 Status: 404
 
@@ -402,7 +411,7 @@ link: http://localhost:8080/api/user/order/id/16
 #### Request
 
 #### Response
-
+```
 {
     "cid": 16,
     "uname": "khangtest1",
@@ -423,7 +432,7 @@ link: http://localhost:8080/api/user/order/id/16
     "status": "Đang xử lý",
     "cost": 140000
 }
-
+```
 
 ## GET
 
@@ -441,6 +450,7 @@ link: http://localhost:8080/api/user/order/uname/khangtest1
 #### Success
 
 Status: 200
+```
 [
     {
         "cid": 1,
@@ -533,6 +543,7 @@ Status: 200
         "cost": 140000
     }
 ]
+```
 
 #### Failure
 Status: 404
