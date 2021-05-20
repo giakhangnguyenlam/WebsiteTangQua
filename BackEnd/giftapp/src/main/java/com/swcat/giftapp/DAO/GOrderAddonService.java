@@ -36,14 +36,7 @@ public class GOrderAddonService {
     public List<GOrderAddOnModel> getAllGOrderAddOn(){
         List<GOrderAddOnModel> gOrderAddOnModels = gorderAddonsRepo.findAll()
         .stream()
-        .map(GOrderAddon -> convertGOrderAddOnEntityToGOrderAddOnModel(GOrderAddon))
-        .collect(Collectors.toList());
-
-        return gOrderAddOnModels;
-    }
-
-    public GOrderAddOnModel getGOrderAddOn(int gOrderId){
-        gorderAddons gOrderAddOnEntity = gorderAddonsRepo.findByGorderId(gOrderId);
+        .map(gOrderAddOnEntity -> {
         Optional<addon> addOnEntityOp = addonRepo.findById(gOrderAddOnEntity.getAddonId());
         addon addOnEntity = addOnEntityOp.get();
         GOrderAddOnModel gOrderAddOnModel = new GOrderAddOnModel(gOrderAddOnEntity.getCid(), 
@@ -54,14 +47,37 @@ public class GOrderAddonService {
         addOnEntity.getAdescription(), 
         addOnEntity.getPrice());
         return gOrderAddOnModel;
+        })
+        .collect(Collectors.toList());
+
+        return gOrderAddOnModels;
+    }
+
+    public List<GOrderAddOnModel> getGOrderAddOn(int gOrderId){
+        List<gorderAddons> gOrderAddOnEntities = gorderAddonsRepo.findByGorderId(gOrderId);
+        List<GOrderAddOnModel> gOrderAddOnModels = gOrderAddOnEntities.stream()
+        .map(gOrderAddOnEntity -> {
+        Optional<addon> addOnEntityOp = addonRepo.findById(gOrderAddOnEntity.getAddonId());
+        addon addOnEntity = addOnEntityOp.get();
+        GOrderAddOnModel gOrderAddOnModel = new GOrderAddOnModel(gOrderAddOnEntity.getCid(), 
+        gOrderAddOnEntity.getGorderId(), 
+        gOrderAddOnEntity.getAddonId(), 
+        gOrderAddOnEntity.getContent(), 
+        addOnEntity.getAname(), 
+        addOnEntity.getAdescription(), 
+        addOnEntity.getPrice());
+        return gOrderAddOnModel;
+        })
+        .collect(Collectors.toList());
+        return gOrderAddOnModels;
     }
 
     public boolean isGOrderAddOnExist(int orderId){
         return gorderAddonsRepo.existsByGorderId(orderId);
     }
 
-    public void deleteGOrderAddOnExist(int orderId){
-        gorderAddonsRepo.deleteByGorderId(orderId);
+    public void deleteGOrderAddOnExist(int cid){
+        gorderAddonsRepo.deleteById(cid);
     }
 
     public gorderAddons convertGOrderAddOnModelToGOrderAddOnEntity(GOrderAddOnModel gOrderAddOnModel){
@@ -69,8 +85,8 @@ public class GOrderAddonService {
         , gOrderAddOnModel.getGorderId()
         , gOrderAddOnModel.getAddonId()
         , gOrderAddOnModel.getContent());
-        System.out.println(gOrderAddOnModel);
-        System.out.println(gorderAddons);
+        // System.out.println(gOrderAddOnModel);
+        // System.out.println(gorderAddons);
         return gorderAddons;
     }
 

@@ -63,14 +63,18 @@ Status code:
 
 # API: AccountInfos
 link: http://localhost:8080/api/accountinfos
-/**
+## POST
+<!---
      * 
      * POST
      * Lưu accountInfo vào database
      * @param accountInfoModel
      * @return
      * @throws URISyntaxException
-*/
+     * Use for add acountinfos into database
+     * NOTE: "phonenum" don't have zero in beginning 
+     * 
+-->
 link: http://localhost:8080/api/accountinfos
 ### Request
 ```
@@ -83,21 +87,24 @@ link: http://localhost:8080/api/accountinfos
 ```
 
 ### Response
-# Successes
+#### Successes
 Status: 201
 Lưu thành công accountInforService
 
-# Failure
+#### Failure
 Status: 404
 
-/**
+## PUT
+<!---
      * PUT
      * update accountInfo
      * @param uname
      * @param accountInfoModel
      * @return
      * @throws URISyntaxException
-*/
+     * Use for update accountinfos
+     * NOTE: "phonenum" don't have zero in beginning 
+-->
 link: http://localhost:8080/api/accountinfos/khangtest1
 ### Request
 ```
@@ -109,20 +116,23 @@ link: http://localhost:8080/api/accountinfos/khangtest1
 ```
 
 ### Response
-# Successes
+#### Successes
 Status:200
 AccountInfo đã được update
 
-# Failure
+#### Failure
 Status:404
-/**
-    Lấy tất cả AccountInfos
-    GET
-*/
+
+## GET
+<!---
+    * Lấy tất cả AccountInfos
+    * GET
+    * Note: API for get all accountinfos
+-->
 ### Request
 link: http://localhost:8080/api/accountinfos
 ### Response
-# Successes
+#### Successes
 [
     {
         "uname": "khangtest1",
@@ -131,19 +141,21 @@ link: http://localhost:8080/api/accountinfos
         "phonenum": 919910266
     }
 ]
-# Failure
+#### Failure
 Status:404
 
-/**
-    Lấy một accountInfo
-    GET
-*/
+## GET
+<!---
+    * Lấy một accountInfo
+    * GET
+    * Note: Use this API for get one accountinfo by using uname
+-->
 link: http://localhost:8080/api/accountinfos/khangtest1
 
 ### Request
 
 ### Response
-# Successes
+#### Successes
 Status:200
 {
     "uname": "khangtest2",
@@ -151,33 +163,41 @@ Status:200
     "uaddress": "daylaaddresss",
     "phonenum": 919910266
 }
-# Failure
+#### Failure
 Status: 404
 
-/**
-    Xóa một accountInfo
-    DELETE
-*/
+## DELETE
+<!---
+    * Xóa một accountInfo
+    * DELETE
+    * Using for admin to delete by using uname
+-->
 
 link: http://localhost:8080/api/accountinfos/khangtest1
 ### Request
 
 ### Response
-# Successes:
+#### Successes:
 Status:200
 Xóa accountInfo thành công
-# Failure:
+#### Failure:
 Status:404
 
 
 
 
 # API: GOrderAddOnUserRest
+<!---
+    * Use this API for managing order&addon
+-->
 link: http://localhost:8080/api/gorderaddon
-/**
-    POST
-    thêm gorderaddon vào database
-*/
+
+## POST
+<!---
+    * POST
+    * thêm gorderaddon vào database
+    * Note: this method incomplete, you just can add each order & addon
+-->
 ### Request
 ```
 {
@@ -190,40 +210,48 @@ link: http://localhost:8080/api/gorderaddon
 ```
 
 ### Response
-# Successes
+#### Successes
 Status: 201
 Lưu thành công gOrderAddOn
 
-# Failure
+#### Failure
 Status: 404
 
-/**
-    UPDATE
-    chỉnh sửa gorderaddon
-*/
+## PUT
+<!---
+    * UPDATE
+    * chỉnh sửa gorderaddon
+    * Use can update gorderaddon by using cid of this gOrderAddOns table
+    * Note: 2 in below link is cid of gOrderAddOns table
+    * gOderId can get by using 2 API below
+-->
 link: http://localhost:8080/api/gorderaddon/2
 ### Request
 {
+    "gorderId": 15,
     "addonId": 3,
     "content":"Muon sua thanh addon thu ba"
 }
 ### Response
-# Successes
+#### Successes
 Status: 200
 GOrderAddOn update thành công
 
-# Failure
+#### Failure
 Status: 400
 
-/**
-    GET
-    Lấy tất cả gOrderAddOn
-*/
+## GET
+<!---
+    * GET
+    * Lấy tất cả gOrderAddOn
+    * Get all gorderaddon in database
+    * 
+-->
 link: http://localhost:8080/api/gorderaddon
 ### Request
 
 ### Response
-# Successes
+#### Successes
 [
     {
         "cid": 1,
@@ -263,43 +291,299 @@ link: http://localhost:8080/api/gorderaddon
     }
 ]
 
-# Failure
+#### Failure
 Status: 404
 
-/**
-    GET
-    Lấy một gOrderAddOn
-*/
-link: http://localhost:8080/api/gorderaddon/2
+## GET
+
+<!---
+    * GET
+    * Lấy một gOrderAddOn
+    * Get gorderaddon by using gorderid
+    * Note: 15 in below link is gorderid
+    *  
+-->
+link: http://localhost:8080/api/gorderaddon/15
 ### Request
 
 ### Response
-# Successes
+#### Successes
 Status:200
-{
-    "cid": 5,
-    "gorderId": 2,
-    "addonId": 3,
-    "content": "Muon sua thanh addon thu ba",
-    "aname": "test1",
-    "adescription": "dung de test",
-    "price": 10000
-}
-# Failure
+[
+    {
+        "cid": 17,
+        "gorderId": 15,
+        "addonId": 1,
+        "content": "cái nơ màu xanh",
+        "aname": "test1",
+        "adescription": "dung de test",
+        "price": 10000
+    },
+    {
+        "cid": 18,
+        "gorderId": 15,
+        "addonId": 5,
+        "content": "Muon sua thanh addon thu ba",
+        "aname": "fakeAddOn1",
+        "adescription": "Đây là addOnFake",
+        "price": 30000
+    }
+]
+#### Failure
 Status: 404
 
-/**
-    DELETE
-    Xóa một gOrderAddOn
-*/
+## DELETE
+<!---
+    * DELETE
+    * Xóa một gOrderAddOn
+    * You can delete gOrderAddOn by using cid of it
+    * Note: 2 in below link is cid of gOrderAddOn id
+-->
 
 link: http://localhost:8080/api/gorderaddon/2
 ### Request
 
 ### Response
-# Successes
+#### Successes
 Status: 200
-Đã xóa thành công addon
+Ğã xóa thành công addon
 
-# Failure
+#### Failure
 Status: 404
+
+
+
+# Mô tả phiên bản 2.0
+
+# API: Order
+
+## POST
+<!---
+    * Using this API for add one order into database
+    * You can add so many addon and get content with it
+    * Note: it send a mail so you can wait a minute
+    * Note: you can choose your date you want us to delivery
+-->
+link: http://localhost:8080/api/user/order
+
+### Request
+```
+{
+    "uname" : "khangtest1",
+    "giftpackId": 1,
+    "receiveAddress" : "123/dada/tp.HCM",
+    "phoneNumber" : 919910266,
+    "dateArrive" : "23-05-2021",
+    "greetingCardContent" : "Happy birthday",
+    "addonId": [1,2],
+    "content" : ["cái nơ màu xanh", "cái thiệp màu hồng"]
+}
+```
+
+### Response
+
+#### Success
+
+Status: 200
+Đã tạo đơn hàng thành công
+Location: /api/user/order/id/16 
+#### Failure
+
+Status: 404
+
+## GET
+<!---
+    * Using this API to getting order by orderid
+    * Use can get orderid by watch location in header or it send with a mail for you
+    * Note: 16 is orderid
+-->
+link: http://localhost:8080/api/user/order/id/16
+
+#### Request
+
+#### Response
+
+{
+    "cid": 16,
+    "uname": "khangtest1",
+    "giftpackId": 1,
+    "receiveAddress": "123/dada/tp.HCM",
+    "phoneNumber": 919910266,
+    "dateOrder": "17-05-2021",
+    "dateArrive": "23-05-2021",
+    "greetingCardContent": "Happy birthday",
+    "addonId": [
+        1,
+        2
+    ],
+    "content": [
+        "cái nơ màu xanh",
+        "cái thiệp màu hồng"
+    ],
+    "status": "Đang xử lý",
+    "cost": 140000
+}
+
+
+## GET
+
+<!---
+    * Using API to getting order by using uname
+    * this return a list of order
+    * 
+-->
+link: http://localhost:8080/api/user/order/uname/khangtest1
+
+### Request
+
+### Response
+
+#### Success
+
+Status: 200
+[
+    {
+        "cid": 1,
+        "uname": "khangtest1",
+        "giftpackId": 1,
+        "receiveAddress": "123/dada/tp.HCM",
+        "phoneNumber": 919910266,
+        "dateOrder": "17-05-2021",
+        "dateArrive": "23-05-2021",
+        "greetingCardContent": "Happy birthday",
+        "addonId": [
+            1
+        ],
+        "content": [
+            "cái nơ màu xanh"
+        ],
+        "status": "Đang chờ xử lý",
+        "cost": 110000
+    },
+    {
+        "cid": 4,
+        "uname": "khangtest1",
+        "giftpackId": 1,
+        "receiveAddress": "123/dada/tp.HCM",
+        "phoneNumber": 919910266,
+        "dateOrder": "17-05-2021",
+        "dateArrive": "23-05-2021",
+        "greetingCardContent": "Happy birthday",
+        "addonId": null,
+        "content": null,
+        "status": "Đang chờ xử lý",
+        "cost": 100000
+    },
+    {
+        "cid": 12,
+        "uname": "khangtest1",
+        "giftpackId": 1,
+        "receiveAddress": "123/dada/tp.HCM",
+        "phoneNumber": 919910266,
+        "dateOrder": "17-05-2021",
+        "dateArrive": "23-05-2021",
+        "greetingCardContent": "Happy birthday",
+        "addonId": [
+            1,
+            2
+        ],
+        "content": [
+            "cái nơ màu xanh",
+            "cai thiep mau hong"
+        ],
+        "status": "Đang chờ xử lý",
+        "cost": 140000
+    },
+    {
+        "cid": 13,
+        "uname": "khangtest1",
+        "giftpackId": 1,
+        "receiveAddress": "123/dada/tp.HCM",
+        "phoneNumber": 919910266,
+        "dateOrder": "17-05-2021",
+        "dateArrive": "23-05-2021",
+        "greetingCardContent": "Happy birthday",
+        "addonId": [
+            2
+        ],
+        "content": [
+            "cai thiep mau hong"
+        ],
+        "status": "Đang chờ xử lý",
+        "cost": 130000
+    },
+    {
+        "cid": 14,
+        "uname": "khangtest1",
+        "giftpackId": 1,
+        "receiveAddress": "123/dada/tp.HCM",
+        "phoneNumber": 919910266,
+        "dateOrder": "17-05-2021",
+        "dateArrive": "23-05-2021",
+        "greetingCardContent": "Happy birthday",
+        "addonId": [
+            1,
+            2
+        ],
+        "content": [
+            "cái nơ màu xanh",
+            "cai thiep mau hong"
+        ],
+        "status": "Đang chờ xử lý",
+        "cost": 140000
+    }
+]
+
+#### Failure
+Status: 404
+
+## GET
+<!---
+    * Get all orders
+    * Using API to get all orders from database
+    * this return list of orderUsermodel
+    * 
+-->
+
+link: http://localhost:8080/api/user/order
+
+### Request
+
+### Response
+Status: 200
+```
+[
+    {
+        "cid": 1,
+        "uname": "khangtest1",
+        "giftpackId": 1,
+        "receiveAddress": "123/dada/tp.HCM",
+        "phoneNumber": 919910266,
+        "dateOrder": "17-05-2021",
+        "dateArrive": "23-05-2021",
+        "greetingCardContent": "Happy birthday",
+        "addonId": [
+            1
+        ],
+        "content": [
+            "cái nơ màu xanh"
+        ],
+        "status": "Đang chờ xử lý",
+        "cost": 110000
+    },
+    {
+        "cid": 4,
+        "uname": "khangtest1",
+        "giftpackId": 1,
+        "receiveAddress": "123/dada/tp.HCM",
+        "phoneNumber": 919910266,
+        "dateOrder": "17-05-2021",
+        "dateArrive": "23-05-2021",
+        "greetingCardContent": "Happy birthday",
+        "addonId": null,
+        "content": null,
+        "status": "Đang chờ xử lý",
+        "cost": 100000
+    }
+]
+```

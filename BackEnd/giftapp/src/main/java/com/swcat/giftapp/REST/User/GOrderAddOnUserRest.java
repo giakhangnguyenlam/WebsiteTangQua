@@ -39,7 +39,7 @@ public class GOrderAddOnUserRest {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createGOrderAddOn(GOrderAddOnModel gOrderAddOnModel) throws URISyntaxException{
-        System.out.println(gOrderAddOnModel);
+        //System.out.println(gOrderAddOnModel);
         gOrderAddOnModel = gOrderAddonService.createGOrderAddOn(gOrderAddOnModel);
         return Response.status(201)
         .entity("Lưu thành công gOrderAddOn")
@@ -48,26 +48,16 @@ public class GOrderAddOnUserRest {
     }
 
     @PUT
-    @Path("/{orderId}")
+    @Path("/{cid}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response updateGOrderAddOn(@PathParam("orderId") int orderId, GOrderAddOnModel gOrderAddOnModel){
-        boolean isGOrderAddOnExist = gOrderAddonService.isGOrderAddOnExist(orderId);
-        if(isGOrderAddOnExist){
-            gorderAddons gorderAddons = gorderAddonsRepo.findByGorderId(orderId);
-            gOrderAddOnModel.setCid(gorderAddons.getCid());
-            gOrderAddOnModel.setGorderId(orderId);
+    public Response updateGOrderAddOn(@PathParam("cid") int cid, GOrderAddOnModel gOrderAddOnModel){
+            gOrderAddOnModel.setCid(cid);
             gOrderAddonService.updateGOrderAddOn(gOrderAddOnModel);
+          
             return Response.status(200)
             .entity("GOrderAddOn update thành công")
             .build();
-        }
-        else
-        {
-            return Response.status(404)
-            .entity("không tìm thấy AddOn, Bạn có muốn thêm Addon vào gói quà của mình")
-            .build();
-        }
     }
 
     @GET
@@ -84,14 +74,14 @@ public class GOrderAddOnUserRest {
         /**
          * Bởi vì không có addOn để test nên dùng tạm addOn giả cái này sau này sẽ bị xóa
          */
-        addon addon = new addon(null, "test1", "dung de test", 10000);
-        addonRepo.save(addon);
+        // addon addon = new addon(null, "test1", "dung de test", 10000);
+        // addonRepo.save(addon);
         //=>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Note: chỉ dùng để test<<<<<<<<<<<<<<<<<<<===
         if(isGOrderAddOnExist){
-            GOrderAddOnModel gOrderAddOn = gOrderAddonService.getGOrderAddOn(orderId);
+            List<GOrderAddOnModel> gOrderAddOn = gOrderAddonService.getGOrderAddOn(orderId);
             return Response.status(200)
             .entity(gOrderAddOn)
-            .contentLocation(new URI("/api/gorderaddon/"+gOrderAddOn.getGorderId()))
+            .contentLocation(new URI("/api/gorderaddon/"+orderId))
             .build();
         }
         else
@@ -101,16 +91,23 @@ public class GOrderAddOnUserRest {
     }
 
     @DELETE
-    @Path("/{orderId}")
+    @Path("/{cid}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response deleteGOrderAddOn(@PathParam("orderId") int orderId){
-        boolean isGOrderAddOnExist = gOrderAddonService.isGOrderAddOnExist(orderId);
-        if(isGOrderAddOnExist){
-            gOrderAddonService.deleteGOrderAddOnExist(orderId);
+    public Response deleteGOrderAddOn(@PathParam("cid") int cid){
+        // boolean isGOrderAddOnExist = gOrderAddonService.isGOrderAddOnExist(orderId);
+        // if(isGOrderAddOnExist){
+        //     gOrderAddonService.deleteGOrderAddOnExist(orderId);
+        //     return Response.status(200).entity("Đã xóa thành công addon").build();
+        // }
+        // else
+        // {
+        //     return Response.status(404).entity("Xóa không thành công addOn").build();
+        // }
+        try {
+            gOrderAddonService.deleteGOrderAddOnExist(cid);
             return Response.status(200).entity("Đã xóa thành công addon").build();
-        }
-        else
-        {
+        } catch (Exception e) {
+            //TODO: handle exception
             return Response.status(404).entity("Xóa không thành công addOn").build();
         }
 

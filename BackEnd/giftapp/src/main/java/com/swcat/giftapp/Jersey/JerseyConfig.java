@@ -5,6 +5,7 @@ import javax.ws.rs.ApplicationPath;
 import com.swcat.giftapp.REST.demoREST;
 import com.swcat.giftapp.REST.User.AccountInfosRest;
 import com.swcat.giftapp.REST.User.GOrderAddOnUserRest;
+import com.swcat.giftapp.REST.User.OrderRest;
 import com.swcat.giftapp.REST.account.accountsREST;
 
 
@@ -24,5 +25,6 @@ public class JerseyConfig extends ResourceConfig {
         register(accountsREST.class);
         register(AccountInfosRest.class);
         register(GOrderAddOnUserRest.class);
+        register(OrderRest.class);
     }
 }

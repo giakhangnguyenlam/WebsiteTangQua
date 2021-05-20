@@ -59,6 +59,7 @@ public class AccountInfosRest {
     public Response updateAccountInfo(@PathParam("uname") String uname, accountInfoModel accountInfoModel) throws URISyntaxException{
         boolean isAccountInfoExist = accountInfoService.isAccountInfoExist(uname);
         if(isAccountInfoExist){
+            accountInfoModel.setUname(uname);
             accountInfoService.updateAccountInfo(accountInfoModel);
             return Response.status(200)
             .entity("AccountInfo đã được update")
