@@ -80,6 +80,7 @@ public class deliveryREST {
         if(exist)
         {
             System.out.print("Run into updateProcess");
+            orderProcessModel.setGorderId(orderID);
             deliveryService.updateOrderProcess(orderProcessModel);
             return Response.status(200).entity("Update success").build();
         }

@@ -39,33 +39,52 @@ public class commentsREST {
         return commentService.listComments();
     }
 
+    @GET
+    @Path("/getCommentsBygiftID/{giftpackId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public gPackCommentsModel getGiftPackageComment(@PathParam("giftpackId") int giftpackId)
+    {
+        return commentService.findgPackCommentsModelByPackID(giftpackId);
+    }
+
+    @GET
+    @Path("/getCommentsByUname/{uname}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<gPackCommentsModel> getGiftPackageCommentByUname(@PathParam("uname") String uname)
+    {
+        return commentService.listCommentsByUname(uname);
+    }
+
+
+
     @POST
     @Path("/addComment")
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     public Response addOrderComments(gPackCommentsModel giftpackCommentModel)
     {
-        boolean exist=commentService.existComments(giftpackCommentModel.getGiftpackId());
-        if(!exist)
+        try
         {
             commentService.addPackCommentsModel(giftpackCommentModel);
             return Response.status(200).entity("Add Comment sucess").build();
         }
-        else
-        return Response.status(400).entity("Add comment unsucess").build();
+        catch(Exception e)
+        {
+            return Response.status(400).entity(e).build();
+        }
     }
 
 
 
     @PUT
-    @Path("/update/{giftpackId}")
+    @Path("/update/{commentId}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateOrderComments(@PathParam("giftpackId") int giftpackId,gPackCommentsModel giftpackCommentModel)
+    public Response updateOrderComments(@PathParam("commentId") int commentId,gPackCommentsModel giftpackCommentModel)
     {
-        boolean exist=commentService.existComments(giftpackId);
+        boolean exist=commentService.existComments(commentId);
         if(exist)
         {
-            commentService.updatePackComments(giftpackCommentModel);;
+            giftpackCommentModel.setCid(commentId);
+            commentService.updatePackComments(giftpackCommentModel);
             return Response.status(200).entity("Update success").build();
         }
         else
@@ -73,17 +92,25 @@ public class commentsREST {
             return Response.status(404).entity("Update unsucess").build();
         }
     }
-
+    /**
+     * giftpackID o day co nghia la comment id trong bang comment 
+     */
     @DELETE
-    @Path("/delete/{giftpackId}")
+    @Path("/delete/{commentId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response deleteOrderComments(@PathParam("giftpackId") int giftpackId)
+    public Response deleteOrderComments(@PathParam("commentId") int giftpackId)
     {
         boolean exist=commentService.existComments(giftpackId);
         if(exist)
         {
-            commentService.deletePackComments(giftpackId);;
+            try{
+                commentService.deletePackComments(giftpackId);
             return Response.status(200).entity("Delete success").build();
+            }
+            catch(Exception e)
+            {
+                return Response.status(400).entity(e).build(); 
+            }
         }
         return Response.status(404).entity("Delete unsuccess").build();
     }

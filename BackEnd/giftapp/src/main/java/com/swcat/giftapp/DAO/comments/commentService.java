@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import javax.mail.MessagingException;
 import javax.ws.rs.GET;
 
+import com.swcat.giftapp.DAO.MailService;
 import com.swcat.giftapp.Entities.giftpackComments;
 import com.swcat.giftapp.Entities.orderProcess;
+import com.swcat.giftapp.Jersey.MailConfig;
 import com.swcat.giftapp.JpaRepo.giftpackCommentsRepo;
 import com.swcat.giftapp.JpaRepo.orderProcessRepo;
 import com.swcat.giftapp.Models.delivery.orderProcessModel;
@@ -32,16 +35,18 @@ public class commentService {
     private  giftpackCommentsRepo commentsRepo;
 
     @Autowired
-    private JavaMailSender javaMailSender;
+    private MailService mailService;
+
 
     public void sendEmailResloveComment(MailCommentModel mailCommentModel) throws MailException
     {
-        SimpleMailMessage simpleMailMessage=new SimpleMailMessage();
-        simpleMailMessage.setFrom("webbanhanglaptop@gmail.com");
-        simpleMailMessage.setTo(mailCommentModel.getEmail());
-        simpleMailMessage.setSubject("Resolve comment of Gift Package");
-        simpleMailMessage.setText(mailCommentModel.getCommentResolve());
-        javaMailSender.send(simpleMailMessage);
+        try{
+            mailService.sendEmailResloveComment(mailCommentModel);
+        }
+        catch(MessagingException exception)
+        {
+            exception.printStackTrace();
+        }
     }
 
     public void addPackCommentsModel(gPackCommentsModel giftpackCommentModel)
@@ -57,6 +62,17 @@ public class commentService {
         return commentsModel;
 
     }
+    public List<gPackCommentsModel> listCommentsByUname(String uname)
+    {
+        List<giftpackComments> giftpackComments=commentsRepo.findByUname(uname);
+        List<gPackCommentsModel> gPackCommentsModels=giftpackComments.stream()
+                            .map(giftpackComment->ConvertgiftpackCommentsgPackCommentsModel(giftpackComment))
+                            .collect(Collectors.toList());
+        return gPackCommentsModels;
+
+    }
+
+
 
     public void deletePackComments(int giftpackId)
     {
@@ -69,9 +85,9 @@ public class commentService {
         commentsRepo.save(giftpackComments);
     }
 
-    public boolean existComments(int giftpackId)
+    public boolean existComments(int commentId)
     {
-        return commentsRepo.existsById(giftpackId);
+        return commentsRepo.existsById(commentId);
     }
 
 

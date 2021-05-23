@@ -3,9 +3,13 @@ package com.swcat.giftapp.Jersey;
 import javax.ws.rs.ApplicationPath;
 
 import com.swcat.giftapp.REST.demoREST;
+import com.swcat.giftapp.REST.User.AccountInfosRest;
+import com.swcat.giftapp.REST.User.GOrderAddOnUserRest;
+import com.swcat.giftapp.REST.User.OrderRest;
 import com.swcat.giftapp.REST.account.accountsREST;
 import com.swcat.giftapp.REST.comments.commentsREST;
 import com.swcat.giftapp.REST.delivery.deliveryREST;
+
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
@@ -22,5 +26,8 @@ public class JerseyConfig extends ResourceConfig {
         register(commentsREST.class);
         // stable
         register(accountsREST.class);
+        register(AccountInfosRest.class);
+        register(GOrderAddOnUserRest.class);
+        register(OrderRest.class);
     }
 }
