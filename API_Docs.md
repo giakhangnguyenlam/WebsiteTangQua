@@ -598,3 +598,246 @@ Status: 200
     }
 ]
 ```
+### API OrdeProcess
+
+## GET
+<!--
+Get all OrderProcess from database
+-->
+link:http://localhost:8080/api/delivery
+## Request:
+## Response:
+Status.200
+[
+    {
+        "gorderId": 5,
+        "pstate": "Canceled",
+        "pdelivered": 1,
+        "pcanceled": 1
+    },
+    {
+        "gorderId": 8,
+        "pstate": "done",
+        "pdelivered": 1,
+        "pcanceled": 0
+    },
+    {
+        "gorderId": 10,
+        "pstate": "cancel",
+        "pdelivered": 0,
+        "pcanceled": 1
+    }
+]
+## Fail:
+ Status.400
+## GET
+<!--
+Get all OrderProcess deliveried
+-->
+link:http://localhost:8080/api/delivery/Listdeliveried
+## Request
+## Response
+Status.200
+[
+    {
+        "gorderId": 5,
+        "pstate": "Canceled",
+        "pdelivered": 1,
+        "pcanceled": 1
+    },
+    {
+        "gorderId": 8,
+        "pstate": "done",
+        "pdelivered": 1,
+        "pcanceled": 0
+    }
+]
+## Fail:
+ Status.400
+
+## POST
+<!--
+Add orderProcess.
+You can set state of order such as waiting, done.
+Addition,you can set pdeliveried and pcanceled by 0. 
+-->
+link:http://localhost:8080/api/delivery/addOrderProcess
+## Request
+    {
+        "gorderId": 5,
+        "pstate": "process",
+        "pdelivered": 0,
+        "pcanceled": 0
+    }
+## Response
+Status.200
+Add success
+
+## PUT
+<!--
+Update orderProcess.
+You can change state of order such as waiting, done.
+Addition,you can set pdeliveried and pcanceled by 0 or 1.
+Mention:end of link is orderProcess id. 
+-->
+link:http://localhost:8080/api/delivery/update/5
+## Request
+    {
+        "gorderId": 5,
+        "pstate": "done",
+        "pdelivered": 1,
+        "pcanceled": 0
+    }
+## Response
+Status.200
+Update success
+
+
+## DELETE
+<!--
+Delete using orderID in database. 
+Change number in last link to chose orderProcess to delete.
+-->
+link:http://localhost:8080/api/delivery/delete/5
+## Request
+
+## Response
+Status.200
+Delete success
+
+
+## API GiftPackComments
+
+## GET
+<!--
+Get all list Comment in database comments.
+-->
+link:http://localhost:8080/comments/listComments
+## Request
+
+# Response
+## Success
+Status.200
+
+[
+    {
+        "cid": 4,
+        "giftpackId": 2,
+        "uname": "catuser",
+        "content": "Fail"
+    }
+]
+## Fail:
+ Status.400
+
+## GET
+<!--
+Get all list Comment by Uname.
+Last link you need to change uname to find.
+-->
+link:http://localhost:8080/comments/getCommentsByUname/catuser
+## Request
+
+# Response
+## Success
+Status.200
+
+[
+    {
+        "cid": 4,
+        "giftpackId": 2,
+        "uname": "catuser",
+        "content": "Fail"
+    }
+]
+## Fail:
+ Status.400
+## GET
+<!--
+Get Comment by CommentID.
+Note:you change number commentID in last link
+ -->
+ link: http://localhost:8080/comments/getCommentsBygiftID/1
+ ## Request
+
+ ## Response
+ ## Success
+ Status.200
+ {
+    "cid": 10,
+    "giftpackId": 1,
+    "uname": "catuser",
+    "content": "Failed"
+}
+
+## Fail:
+ Status.400
+## POST
+<!--
+Insert comment.
+ -->
+ ## Request
+ {
+    "cid": 10,
+    "giftpackId": 1,
+    "uname": "catuser",
+    "content": "Failed"
+}
+
+## Response
+## Success
+Add Comment sucess
+## Fail:
+ Status.400
+## PUT
+<!--
+Update comment.
+ -->
+ ## Request
+     {
+        "giftpackId": 2,
+        "uname": "catuser",
+        "content": "Fail"
+    }
+ ## Response
+ Status.200
+ Update success
+## Fail:
+ Status.400
+ Update unsuccess
+
+## DELETE
+<!--
+Delete comment by commentID.
+Change last number in link to chose comment to delete.
+ -->
+
+ link:http://localhost:8080/comments/delete/10
+ ## Request
+ ## Response
+
+ ## Sucess:
+ Status.200
+ Delete success
+ ## Fail:
+ Status.400
+Delete unsuccess
+
+
+## POST
+link:http://localhost:8080/comments/resolveComment
+## Request:
+{
+    "email":"18110092@student.hcmute.edu.vn",
+    "content":"Gift very good",
+    "commentResolve":"Thanks you for buy Gift",
+    "giftpackId":2
+
+}
+## Response
+
+## Success
+Status.200
+Mail sent.
+## Fail
+Mail unsent
