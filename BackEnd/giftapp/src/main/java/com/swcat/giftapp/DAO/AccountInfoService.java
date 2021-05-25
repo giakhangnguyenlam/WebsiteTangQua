@@ -28,7 +28,7 @@ public class AccountInfoService {
 
     //update giá trị của accountInfo
     public void updateAccountInfo(accountInfoModel accountInfoModel){
-        accountInfo accountInfo = convertAccountInfoModelToAccountInfoEntity(accountInfoModel);        
+        accountInfo accountInfo = convertAccountInfoModelToAccountInfoEntity(accountInfoModel);
         accountInfoRepo.save(accountInfo);
     }
 
@@ -59,18 +59,19 @@ public class AccountInfoService {
     }
 
     public accountInfoModel convertAccountInfoEntityToAccountInfoModel(accountInfo accountInfo){
-        accountInfoModel accountInfoModel = new accountInfoModel(accountInfo.getUname(), 
-        accountInfo.getDisName(), 
-        accountInfo.getUaddress(), 
-        accountInfo.getPhonenum());
+        accountInfoModel accountInfoModel = new accountInfoModel(accountInfo.getUname(),
+        accountInfo.getDisName(),
+        accountInfo.getUaddress(),
+        accountInfo.getPhonenum(), accountInfo.getEmail());
         return accountInfoModel;
     }
 
     public accountInfo convertAccountInfoModelToAccountInfoEntity(accountInfoModel accountInfoModel){
-        accountInfo accountInfo = new accountInfo(accountInfoModel.getUname(), 
-        accountInfoModel.getDisname(), 
-        accountInfoModel.getUaddress(), 
-        accountInfoModel.getPhonenum());
+        accountInfo accountInfo = new accountInfo(accountInfoModel.getUname(),
+        accountInfoModel.getDisname(),
+        accountInfoModel.getUaddress(),
+        accountInfoModel.getPhonenum(), accountInfoModel.getEmail());
+
         return accountInfo;
     }
 }

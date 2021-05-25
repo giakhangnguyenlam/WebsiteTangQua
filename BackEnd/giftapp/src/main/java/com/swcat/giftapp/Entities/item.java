@@ -20,7 +20,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class item {
     @Id
-    @Column(name = "item")
+    @Column(name = "cid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cid;
 

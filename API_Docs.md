@@ -841,3 +841,10 @@ Status.200
 Mail sent.
 ## Fail
 Mail unsent
+
+# API: Items
+
+Link: http://localhost:8080/api/items
+
+## GET
+

@@ -9,7 +9,7 @@ import com.swcat.giftapp.REST.User.OrderRest;
 import com.swcat.giftapp.REST.account.accountsREST;
 import com.swcat.giftapp.REST.comments.commentsREST;
 import com.swcat.giftapp.REST.delivery.deliveryREST;
-
+import com.swcat.giftapp.REST.items.itemsREST;
 
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
@@ -29,5 +29,6 @@ public class JerseyConfig extends ResourceConfig {
         register(AccountInfosRest.class);
         register(GOrderAddOnUserRest.class);
         register(OrderRest.class);
+        register(itemsREST.class);
     }
 }

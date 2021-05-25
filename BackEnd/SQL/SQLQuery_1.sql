@@ -26,6 +26,7 @@ CREATE TABLE accountinfo (
     disname NVARCHAR(100) NOT NULL,
     uaddress NTEXT,
     phonenum INT NOT NULL,
+	email VARCHAR(200),
 
 	PRIMARY KEY(uname)
 )

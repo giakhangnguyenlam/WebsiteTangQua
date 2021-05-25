@@ -14,4 +14,5 @@ public class accountInfoModel {
     private String disname;
     private String uaddress;
     private Integer phonenum;
+    private String email;
 }

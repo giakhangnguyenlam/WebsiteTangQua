@@ -20,7 +20,7 @@ public class accountInfo {
     @Id
     @Column(name = "uname")
     private String uname;
-    
+
     @Column(name = "disname")
     private String disName;
 
@@ -29,4 +29,7 @@ public class accountInfo {
 
     @Column(name = "phonenum")
     private Integer phonenum;
+
+    @Column(name = "email")
+    private String email;
 }
