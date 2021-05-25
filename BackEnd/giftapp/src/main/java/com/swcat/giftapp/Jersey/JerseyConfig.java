@@ -7,8 +7,10 @@ import com.swcat.giftapp.REST.User.AccountInfosRest;
 import com.swcat.giftapp.REST.User.GOrderAddOnUserRest;
 import com.swcat.giftapp.REST.User.OrderRest;
 import com.swcat.giftapp.REST.account.accountsREST;
+import com.swcat.giftapp.REST.addon.addonREST;
 import com.swcat.giftapp.REST.comments.commentsREST;
 import com.swcat.giftapp.REST.delivery.deliveryREST;
+import com.swcat.giftapp.REST.giftpacks.giftpacksREST;
 import com.swcat.giftapp.REST.items.itemsREST;
 
 import org.glassfish.jersey.server.ResourceConfig;
@@ -22,13 +24,15 @@ public class JerseyConfig extends ResourceConfig {
 
         // register REST class here
         register(demoREST.class); // demo
+        // stable
         register(deliveryREST.class);
         register(commentsREST.class);
-        // stable
         register(accountsREST.class);
         register(AccountInfosRest.class);
         register(GOrderAddOnUserRest.class);
         register(OrderRest.class);
         register(itemsREST.class);
+        register(giftpacksREST.class);
+        register(addonREST.class);
     }
 }
