@@ -848,3 +848,356 @@ Link: http://localhost:8080/api/items
 
 ## GET
 
+### Response
+
+Status code: 200
+
+```json
+[
+  {
+    "cid": 1,
+    "itemName": "keo",
+    "itemDescription": "2 bich keo",
+    "thumbnailimg": "https://www.apple.com/ac/structured-data/images/open_graph_logo.png?201810040211",
+    "price": 250,
+    "activeState": 1
+  },
+  {
+    "cid": 2,
+    "itemName": "keo",
+    "itemDescription": "2 bich keo",
+    "thumbnailimg": "https://www.apple.com/ac/structured-data/images/open_graph_logo.png?201810040211",
+    "price": 200,
+    "activeState": 1
+  }
+]
+```
+
+## GET
+
+Link: http://localhost:8080/api/items/1
+
+> Get an item with id (this link for id = 1)
+
+### Response
+
+Status code: 200
+
+```json
+{
+  "cid": 1,
+  "itemName": "keo",
+  "itemDescription": "2 bich keo",
+  "thumbnailimg": "https://www.apple.com/ac/structured-data/images/open_graph_logo.png?201810040211",
+  "price": 250,
+  "activeState": 1
+}
+```
+
+## POST
+
+> Create new item
+
+### Request
+
+```json
+{
+  "itemName": "gau bong",
+  "itemDescription": "1 co gau bong mau tin",
+  "thumbnailimg": "https://www.apple.com/ac/structured-data/images/open_graph_logo.png?201810040211",
+  "price": 450,
+  "activeState": 1
+}
+```
+
+### Response
+
+Status code: 201
+
+```text
+Created new item.
+```
+
+## PUT
+
+Link: http://localhost:8080/api/items/1
+
+> Update an item with id (this link for item has id = 1)
+
+### Request
+
+```json
+{
+  "itemName": "gau bong",
+  "itemDescription": "Con gau bong mau tim to dung",
+  "thumbnailimg": "https://www.apple.com/ac/structured-data/images/open_graph_logo.png?201810040211",
+  "price": 350,
+  "activeState": 1
+}
+```
+
+### Response
+
+Status code: 200
+
+```text
+Update item.
+```
+
+## GET
+
+Link: http://localhost:8080/api/items/noitemtypes
+
+> Get a number of item's types
+
+### Response
+
+Status code: 200
+
+```json
+{
+  "numberofitemtypes": 3
+}
+```
+
+# API: giftpack
+
+Link: http://localhost:8080/api/giftpacks
+
+## GET
+
+> Get all giftpack
+
+### Response
+
+Status code: 200
+
+```json
+[
+  {
+    "cid": 1,
+    "gname": "qua valentine",
+    "gdescription": "sicola va hoa hong",
+    "thumbnailimg": "https://www.apple.com/ac/structured-data/images/open_graph_logo.png?201810040211",
+    "price": 570,
+    "averageStar": 0,
+    "activeState": 1
+  },
+  {
+    "cid": 10,
+    "gname": "qua sinh nhat",
+    "gdescription": "banh kem",
+    "thumbnailimg": "https://www.apple.com/ac/structured-data/images/open_graph_logo.png?201810040211",
+    "price": 270,
+    "averageStar": 0,
+    "activeState": 1
+  }
+]
+```
+
+## GET
+
+Link:http://localhost:8080/api/giftpacks/1
+
+> Get a giftpack has id = 1
+
+### Response
+
+Status code: 200
+
+```json
+{
+  "cid": 1,
+  "gname": "qua valentine",
+  "gdescription": "sicola va hoa hong",
+  "thumbnailimg": "https://www.apple.com/ac/structured-data/images/open_graph_logo.png?201810040211",
+  "price": 570,
+  "averageStar": 0,
+  "activeState": 1
+}
+```
+
+
+
+## POST
+
+> Create new giftpack
+
+### Request
+
+```json
+{
+    "gname": "qua xin loi",
+    "gdescription": "hoa cuc",
+    "thumbnailimg": "https://www.apple.com/ac/structured-data/images/open_graph_logo.png?201810040211",
+    "price": 130,
+    "averageStar": 0,
+    "activeState": 1
+}
+```
+
+### Response
+
+Status code: 201
+
+```text
+Created new giftpack
+```
+
+## PUT
+
+Link: http://localhost:8080/api/giftpacks/10
+
+> Update an existed gitfpack has id = 10
+
+### Request
+
+```json
+{
+    "gname": "qua chia tay",
+    "gdescription": "hoa hong trang",
+    "thumbnailimg": "https://www.apple.com/ac/structured-data/images/open_graph_logo.png?201810040211",
+    "price": 1300,
+    "averageStar": 0,
+    "activeState": 1
+}
+```
+
+### Response
+
+Status code: 200
+
+```text
+Updated giftpack
+```
+
+## GET
+
+Link: http://localhost:8080/api/giftpacks/nogiftpacktypes
+
+> Get the number of giftpack's types
+
+### Response
+
+```json
+{
+  "numberofgiftpacktypes": 3
+}
+```
+
+# API: Addon
+
+Link: http://localhost:8080/api/addons
+
+## GET
+
+> Get all of addon
+
+### Response
+
+Status code: 200
+
+```json
+[
+  {
+    "cid": 1,
+    "aname": "loi chuc",
+    "adescription": "mot loi chuc den nhung ai ...",
+    "price": 25
+  },
+  {
+    "cid": 2,
+    "aname": "phat nhac",
+    "adescription": "O noi dau do nhin ve qua khu cua hai ta lieu em co tiec?",
+    "price": 25
+  },
+  {
+    "cid": 3,
+    "aname": "choi nhac",
+    "adescription": "O noi dau do nhin ve qua khu cua hai ta lieu em co tiec?",
+    "price": 25
+  }
+]
+```
+
+## GET
+
+Link: http://localhost:8080/api/addons/1
+
+> Get an addon has id = 1
+
+### Response
+
+Status code: 200
+
+```json
+{
+  "cid": 1,
+  "aname": "loi chuc",
+  "adescription": "mot loi chuc den nhung ai ...",
+  "price": 25
+}
+```
+
+## POST
+
+> Create new addon
+
+### Request
+
+```json
+{
+  "aname": "dance",
+  "adescription": "999 doa hoa hong",
+  "price": 99
+}
+```
+
+### Response
+
+Status code: 201
+
+```text
+Created new addon
+```
+
+## PUT
+
+Link: http://localhost:8080/api/addons/1
+
+> Update addon has id = 1
+
+### Request
+
+```json
+{
+  "aname": "dance and nu.de",
+  "adescription": "999 doa hoa hong, thoi doi",
+  "price": 199
+}
+```
+
+### Response
+
+Status code: 200
+
+```text
+Updated addon!
+```
+
+## GET
+
+Link: http://localhost:8080/api/addons/noaddontypes
+
+> Get the number of addon's types
+
+### Response
+
+Status code: 200
+
+```json
+{
+  "noaddontypes": 4
+}
+```
+

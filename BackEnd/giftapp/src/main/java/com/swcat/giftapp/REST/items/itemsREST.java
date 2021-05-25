@@ -47,7 +47,7 @@ public class itemsREST {
         if(kk) {
             return Response.status(Status.OK).entity(itms).build();
         } else {
-            return Response.status(Status.BAD_REQUEST).entity("Nothing!").build();
+            return Response.status(Status.OK).entity("Nothing!").build();
         }
     }
 
@@ -127,7 +127,7 @@ public class itemsREST {
         }
 
         if (kk) {
-            return Response.status(Status.CREATED).entity("Update item.").build();
+            return Response.status(Status.OK).entity("Update item.").build();
         } else {
             return Response.status(Status.BAD_REQUEST).entity("Nothing changed!").build();
         }
@@ -141,6 +141,6 @@ public class itemsREST {
 
         noit = service.getnoitemtype();
 
-        return Response.status(Status.OK).entity("{ \"numberofitemtypes\": \"" + noit + "\" }").build();
+        return Response.status(Status.OK).entity("{ \"numberofitemtypes\": " + noit + " }").build();
     }
 }
