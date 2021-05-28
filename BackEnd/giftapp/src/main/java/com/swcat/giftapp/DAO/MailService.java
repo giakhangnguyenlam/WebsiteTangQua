@@ -134,7 +134,10 @@ public class MailService {
     }
     public String findEmailByUserName(String uname){
         //String email = accountInfoRepo.findById(uname).get()
-        return "giakhangnguyen115@gmail.com";
+        //return "giakhangnguyen115@gmail.com";
+
+        String email = accountInfoRepo.findById(uname).get().getEmail();
+        return email;
     }
 
 }
