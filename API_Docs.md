@@ -82,7 +82,8 @@ link: http://localhost:8080/api/accountinfos
     "uname" : "khangtest2",
     "disname" : "khangtest2",
     "uaddress" : "daylaaddresss",
-    "phonenum" : 919910266
+    "phonenum" : 919910266,
+    "email" : "mailjcungdc"
 }
 ```
 
@@ -111,7 +112,8 @@ link: http://localhost:8080/api/accountinfos/khangtest1
 {
     "disname" : "khangtest3",
     "uaddress" : "daylaaddresss",
-    "phonenum" : 919910266
+    "phonenum" : 919910266,
+    "email" : "mailjcungdc"
 }
 ```
 
@@ -139,7 +141,8 @@ link: http://localhost:8080/api/accountinfos
         "uname": "khangtest1",
         "disname": "khangtest",
         "uaddress": "daylaaddress",
-        "phonenum": 919910266
+        "phonenum": 919910266,
+        "email" : "mailjcungdc"
     }
 ]
 ```
@@ -608,6 +611,7 @@ link:http://localhost:8080/api/delivery
 ## Request:
 ## Response:
 Status.200
+```
 [
     {
         "gorderId": 5,
@@ -628,6 +632,7 @@ Status.200
         "pcanceled": 1
     }
 ]
+```
 ## Fail:
  Status.400
 ## GET
@@ -638,6 +643,7 @@ link:http://localhost:8080/api/delivery/Listdeliveried
 ## Request
 ## Response
 Status.200
+```
 [
     {
         "gorderId": 5,
@@ -652,6 +658,7 @@ Status.200
         "pcanceled": 0
     }
 ]
+```
 ## Fail:
  Status.400
 
@@ -663,12 +670,14 @@ Addition,you can set pdeliveried and pcanceled by 0.
 -->
 link:http://localhost:8080/api/delivery/addOrderProcess
 ## Request
+```
     {
         "gorderId": 5,
         "pstate": "process",
         "pdelivered": 0,
         "pcanceled": 0
     }
+```
 ## Response
 Status.200
 Add success
@@ -682,12 +691,14 @@ Mention:end of link is orderProcess id.
 -->
 link:http://localhost:8080/api/delivery/update/5
 ## Request
+```
     {
         "gorderId": 5,
         "pstate": "done",
         "pdelivered": 1,
         "pcanceled": 0
     }
+```
 ## Response
 Status.200
 Update success
@@ -718,7 +729,7 @@ link:http://localhost:8080/comments/listComments
 # Response
 ## Success
 Status.200
-
+```
 [
     {
         "cid": 4,
@@ -727,6 +738,7 @@ Status.200
         "content": "Fail"
     }
 ]
+```
 ## Fail:
  Status.400
 
@@ -741,7 +753,7 @@ link:http://localhost:8080/comments/getCommentsByUname/catuser
 # Response
 ## Success
 Status.200
-
+```
 [
     {
         "cid": 4,
@@ -750,6 +762,7 @@ Status.200
         "content": "Fail"
     }
 ]
+```
 ## Fail:
  Status.400
 ## GET
@@ -763,13 +776,14 @@ Note:you change number commentID in last link
  ## Response
  ## Success
  Status.200
+```
  {
     "cid": 10,
     "giftpackId": 1,
     "uname": "catuser",
     "content": "Failed"
 }
-
+```
 ## Fail:
  Status.400
 ## POST
@@ -777,13 +791,14 @@ Note:you change number commentID in last link
 Insert comment.
  -->
  ## Request
+```
  {
     "cid": 10,
     "giftpackId": 1,
     "uname": "catuser",
     "content": "Failed"
 }
-
+```
 ## Response
 ## Success
 Add Comment sucess
@@ -794,11 +809,13 @@ Add Comment sucess
 Update comment.
  -->
  ## Request
+```
      {
         "giftpackId": 2,
         "uname": "catuser",
         "content": "Fail"
     }
+```
  ## Response
  Status.200
  Update success
@@ -827,6 +844,7 @@ Delete unsuccess
 ## POST
 link:http://localhost:8080/comments/resolveComment
 ## Request:
+```
 {
     "email":"18110092@student.hcmute.edu.vn",
     "content":"Gift very good",
@@ -834,6 +852,7 @@ link:http://localhost:8080/comments/resolveComment
     "giftpackId":2
 
 }
+```
 ## Response
 
 ## Success
