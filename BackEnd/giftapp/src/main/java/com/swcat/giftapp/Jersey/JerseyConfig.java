@@ -2,6 +2,7 @@ package com.swcat.giftapp.Jersey;
 
 import javax.ws.rs.ApplicationPath;
 
+import com.swcat.giftapp.REST.GiftpackItemsRest;
 import com.swcat.giftapp.REST.demoREST;
 import com.swcat.giftapp.REST.User.AccountInfosRest;
 import com.swcat.giftapp.REST.User.GOrderAddOnUserRest;
@@ -34,5 +35,6 @@ public class JerseyConfig extends ResourceConfig {
         register(itemsREST.class);
         register(giftpacksREST.class);
         register(addonREST.class);
+        register(GiftpackItemsRest.class);
     }
 }
