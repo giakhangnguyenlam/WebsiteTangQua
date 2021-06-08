@@ -1298,7 +1298,7 @@ Success: 200
 
 ## DELETE
 
-> Delete by id in database of giftpackItems
+> Delete by id giftpack of giftpackItems
 
 link: http://localhost:8080/api/giftpackitems/2
 ### Request
