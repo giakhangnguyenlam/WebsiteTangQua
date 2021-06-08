@@ -9,4 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface giftpackitemsRepo extends JpaRepository<giftpackitems, Integer> {
     List<giftpackitems> findByGiftpackId(Integer giftpackId);
+    void deleteByGiftpackId(Integer giftpackId);
 }

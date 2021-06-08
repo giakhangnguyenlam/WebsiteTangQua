@@ -47,7 +47,7 @@ public class GiftpackItemsService {
     }
 
     public void deleteGiftpackItems(int id){
-        giftpackitemsRepo.deleteById(id);
+        giftpackitemsRepo.deleteByGiftpackId(id);
     }
 
 
