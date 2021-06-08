@@ -861,6 +861,8 @@ Mail sent.
 ## Fail
 Mail unsent
 
+# Mô tả phiên bản 3.0
+
 # API: Items
 
 Link: http://localhost:8080/api/items
@@ -1220,3 +1222,87 @@ Status code: 200
 }
 ```
 
+# API : GiftpackItems
+
+<!---
+    One giftpack has many items so this API can manage them.
+-->
+link: http://localhost:8080/api/giftpackitems
+## GET
+> Get all giftpackItems
+
+Link : http://localhost:8080/api/giftpackitems
+
+### Request
+
+### Response
+```
+[
+    {
+        "cid": 3,
+        "giftpackId": 1,
+        "itemId": 2
+    }
+]
+```
+
+## GET
+
+> Get giftpacksItem by id=1
+link: http://localhost:8080/api/giftpackitems/1
+### Request
+
+### Response
+```
+[
+    {
+        "cid": 3,
+        "giftpackId": 1,
+        "itemId": 2
+    }
+]
+```
+
+## POST
+
+> Add one giftpack has many items
+
+### Request
+```
+{
+    "giftpackid": 1,
+    "itemid" : [1, 2]
+}
+```
+
+### Response
+
+Success: 201
+
+## PUT
+
+> Update by id in database of giftpackItems
+
+link: http://localhost:8080/api/giftpackitems/2
+### Request
+```
+{
+    "giftpackId": 1,
+    "itemId": 2
+}
+```
+
+### Response
+
+Success: 200
+
+## DELETE
+
+> Delete by id in database of giftpackItems
+
+link: http://localhost:8080/api/giftpackitems/2
+### Request
+
+### Response
+
+Success: 200
