@@ -79,6 +79,7 @@
           :key="addon.cid"
           :addon="addon"
           @selectAddon="selectAddon"
+          @removeAddon="removeAddon"
         />
       </div>
     </div>
@@ -172,6 +173,18 @@ export default {
     selectAddon(cid, note) {
       this.selectedAddons.push(cid)
       this.addonsNote.push(note)
+    },
+    removeAddon(cid, note) {
+      const newSelectedAddons = []
+      const newAddonsNote = []
+      this.selectedAddons.map((addonId) => {
+        if (addonId !== cid) newSelectedAddons.push(addonId)
+      })
+      this.addonsNote.map((addonNote) => {
+        if (addonNote !== note) newAddonsNote.push(addonNote)
+      })
+      this.selectedAddons = [...newSelectedAddons]
+      this.addonsNote = [...newAddonsNote]
     },
     handleSendGift() {
       if (

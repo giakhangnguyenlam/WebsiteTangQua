@@ -30,6 +30,7 @@
           'hover:bg-red-400': isSelected,
         }"
         @click="handleToggleAddon"
+        :disabled="!note"
       >
         {{ isSelected ? 'REMOVE -' : 'ADD +' }}
       </button>
@@ -56,6 +57,9 @@ export default {
       this.isSelected = !this.isSelected
       if (this.isSelected) {
         this.$emit('selectAddon', this.addon.cid, this.note)
+      } else {
+        this.note = ''
+        this.$emit('removeAddon', this.addon.cid, this.note)
       }
     },
   },
