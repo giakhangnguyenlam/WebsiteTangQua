@@ -5,7 +5,7 @@
     </div>
     <div class="px-5 mt-3">
       <div class="flex justify-between">
-        <h2 class="text-lg font-bold">{{ item.itemName }}</h2>
+        <h2 class="text-lg font-bold">{{ item.cid }}. {{ item.itemName }}</h2>
         <span class="font-semibold">${{ item.price }}</span>
       </div>
       <div class="flex justify-between mt-2">

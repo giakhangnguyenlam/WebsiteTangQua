@@ -14,7 +14,7 @@
         </p>
         <button
           class="px-2 py-1 text-sm text-white bg-yellow-500 rounded-full  hover:bg-yellow-400"
-          @click="isEditModalShowed = true"
+          @click="handleCloseModal"
         >
           EDIT
         </button>
@@ -57,6 +57,15 @@
               type="text"
               class="px-3 py-2 border border-blue-500 rounded-md focus:ring-1"
               v-model="editingGiftPack.thumbnailimg"
+            />
+          </label>
+          <label class="flex flex-col space-y-1">
+            <span>Pack's items (item's cid, split by ","):</span>
+            <input
+              type="text"
+              class="px-3 py-2 border border-blue-500 rounded-md focus:ring-1"
+              :placeholder="itemsOfPackStringify"
+              v-model="editingItem"
             />
           </label>
         </div>
@@ -104,15 +113,34 @@
 export default {
   data() {
     return {
+      itemsOfPack: [],
       editingGiftPack: { ...this.giftPack },
       isEditModalShowed: false,
       isEditDone: false,
+      editingItem: '',
     }
+  },
+  computed: {
+    itemsOfPackStringify() {
+      return this.itemsOfPack.length === 0
+        ? 'No item. Click here to add one!'
+        : `Current items: ${this.itemsOfPack.toString()}`
+    },
   },
   props: {
     giftPack: {
       type: Object,
     },
+  },
+  created() {
+    this.$axios
+      .get(
+        `http://tonydomain.ddns.net:8080/giftapp/api/giftpackitems/${this.giftPack.cid}`
+      )
+      .then((res) => {
+        this.itemsOfPack = [...res.data.itemid]
+      })
+      .catch((err) => console.log(err))
   },
   methods: {
     handleEdit() {
@@ -121,15 +149,53 @@ export default {
           `http://tonydomain.ddns.net:8080/giftapp/api/giftpacks/${this.editingGiftPack.cid}`,
           this.editingGiftPack
         )
-        .then((res) => {
-          this.isEditDone = true
-          setTimeout(() => {
-            this.isEditModalShowed = false
-            this.$emit('reloadGiftPacks')
-            this.isEditDone = false
-          }, 500)
+        .then(() => {
+          this.$emit('reloadGiftPacks')
+          if (!this.editingItem) {
+            this.isEditDone = true
+            setTimeout(() => {
+              this.isEditModalShowed = false
+              this.isEditDone = false
+            }, 500)
+          } else {
+            this.$axios
+              .delete(
+                `http://tonydomain.ddns.net:8080/giftapp/api/giftpackitems/${this.giftPack.cid}`
+              )
+              .then(() => {
+                this.$axios
+                  .post(
+                    'http://tonydomain.ddns.net:8080/giftapp/api/giftpackitems',
+                    {
+                      giftpackid: this.giftPack.cid,
+                      itemid: this.editingItem.split(','),
+                    }
+                  )
+                  .then((res) => {
+                    this.$axios
+                      .get(
+                        `http://tonydomain.ddns.net:8080/giftapp/api/giftpackitems/${this.giftPack.cid}`
+                      )
+                      .then((res) => {
+                        this.itemsOfPack = [...res.data.itemid]
+                        this.isEditDone = true
+                        setTimeout(() => {
+                          this.isEditModalShowed = false
+                          this.isEditDone = false
+                        }, 500)
+                      })
+                      .catch((err) => console.log(err))
+                  })
+                  .catch((err) => console.log(err))
+              })
+              .catch((err) => console.log(err))
+          }
         })
         .catch((err) => console.log(err))
+    },
+    handleCloseModal() {
+      this.isEditModalShowed = true
+      this.editingItem = ''
     },
   },
 }
