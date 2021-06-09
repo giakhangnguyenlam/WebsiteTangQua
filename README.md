@@ -20,7 +20,7 @@ ___Nhóm thực hiện: <span style="color:yellow">15</span>___
 
 > Khi hệ thống sử dụng API mà phát sinh lỗi bạn có thể liên lạc qua email: laptrinhweb66@gmail.com để được khắc phục sớm nhất  
 
-U can replace ___localhost___ to ___tonydomain.ddns.net___
+U can replace ___localhost___ to ___tonydomain.ddns.net___, maybe has app name follow the domain. Ex: __tonydomain.ddns.net:8080/giftapp__
 
 # Account
 
