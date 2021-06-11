@@ -18,9 +18,24 @@ ___Nhóm thực hiện: <span style="color:yellow">15</span>___
 
 > Hệ thống sẽ liên tục được cập nhật và bổ sung những tính năng mới.
 
-> Khi hệ thống sử dụng API mà phát sinh lỗi bạn có thể liên lạc qua email: laptrinhweb66@gmail.com để được khắc phục sớm nhất  
+> Khi hệ thống sử dụng API mà phát sinh lỗi bạn có thể liên lạc qua email: giakhangnguyen115@gmail.com để được khắc phục sớm nhất.  
 
 U can replace ___localhost___ to ___tonydomain.ddns.net___, maybe has app name follow the domain. Ex: __tonydomain.ddns.net:8080/giftapp__
+
+### Hỗ trợ thử nghiệm hệ thống
+
+> Thử nghiệm hệ thống giftapp bằng cách thực hiện những bước sau đây:
+> Bước 1: Clone project về máy
+> Bước 2: vào thư mục supporting test postman để kiểm tra thử có file CNPM postman_collection.json hay không.
+> Bước 3: Vào postman
+> Bước 4: Chọn file -> import
+> Bước 5: chọn tới đường dẫn file CNPM.postman_collection.json
+
+Sau khi thực hiện xong có thể test thử tất cả các chức năng của hệ thống.
+
+Note: nếu không thực hiện được có thể cho host đã bị tắt (host của nhóm em). Để có thể test tiếp thay đổi tonydomain.ddns.net thành localhost
+
+# Mô tả phiên bản 1.0
 
 # Account
 
